@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { BrowserMultiFormatReader } from "@zxing/library";
 
 const BarcodeScanner = ({ onScan }) => {
@@ -6,17 +6,17 @@ const BarcodeScanner = ({ onScan }) => {
 
   useEffect(() => {
     const codeReader = new BrowserMultiFormatReader();
-
+    
     codeReader.decodeFromVideoDevice(undefined, videoRef.current, (result, err) => {
       if (result) {
-        onScan(result.getText()); // Enviar el código al input
+        onScan(result.getText()); // Enviar el código escaneado al input
       }
-    });
+    }).catch((error) => console.error("Error al acceder a la cámara:", error));
 
     return () => codeReader.reset();
   }, [onScan]);
 
-  return <video ref={videoRef} style={{ width: "100%", maxWidth: "400px" }}></video>;
+  return <video ref={videoRef} style={{ width: "100%", maxWidth: "400px" }} autoPlay playsInline></video>;
 };
 
 export default BarcodeScanner;

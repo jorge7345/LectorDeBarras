@@ -8,7 +8,7 @@ function App () {
   return (
     <div style={{ textAlign: "center", padding: "20px" }}>
       <h2>Escáner de Código de Barras</h2>
-      
+
       {/* Escáner de código de barras */}
       <BarcodeScanner onScan={setBarcode} />
 
