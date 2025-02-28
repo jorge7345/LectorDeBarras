@@ -1,5 +1,5 @@
 import { useState } from "react";
-import BarcodeScanner from "./BarcodeScanner";
+import BarcodeScanner from "./components/BarCodeScanner.jsx";
 import './App.css'
 
 function App () {
